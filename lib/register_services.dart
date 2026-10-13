@@ -58,28 +58,80 @@ void registerServices() {
   getIt.registerSingleton(GroupEncryptor(getIt<Encryptor>()));
   getIt.registerSingleton(EditGroupNameService(getIt<GroupEncryptor>()));
   getIt.registerSingleton(GroupMessageEncryptor(getIt<Encryptor>()));
-  getIt.registerSingleton(GroupMessagesViewService(getIt<EncryptionController>(), getIt<GroupMessageEncryptor>()));
+  getIt.registerSingleton(
+    GroupMessagesViewService(
+      getIt<EncryptionController>(),
+      getIt<GroupMessageEncryptor>(),
+    ),
+  );
   getIt.registerSingleton(AccountsNotInGroupService(getIt<AccountEncryptor>()));
   getIt.registerSingleton(AccountsInGroupService(getIt<AccountEncryptor>()));
-  getIt.registerSingleton(AccountActivitiesTableService(getIt<AccountActivityEncryptor>(), getIt<AccountEncryptor>()));
+  getIt.registerSingleton(
+    AccountActivitiesTableService(
+      getIt<AccountActivityEncryptor>(),
+      getIt<AccountEncryptor>(),
+    ),
+  );
   getIt.registerSingleton(AudioController());
-  getIt.registerSingleton(UsersTableService(getIt<EncryptionController>(), getIt<AccountEncryptor>()));
+  getIt.registerSingleton(
+    UsersTableService(getIt<EncryptionController>(), getIt<AccountEncryptor>()),
+  );
   getIt.registerSingleton(MessagesTableService(getIt<GroupMessageEncryptor>()));
-  getIt.registerSingleton(AccountController(getIt<UsersTableService>(), getIt<AccountActivitiesTableService>()));
-  getIt.registerSingleton(AccountsNotInConversationService(getIt<AccountEncryptor>(), getIt<AccountController>()));
-  getIt.registerSingleton(GroupsLatestMessagesService(getIt<EncryptionController>(), getIt<AccountController>()));
+  getIt.registerSingleton(
+    AccountController(
+      getIt<UsersTableService>(),
+      getIt<AccountActivitiesTableService>(),
+    ),
+  );
+  getIt.registerSingleton(
+    AccountsNotInConversationService(
+      getIt<AccountEncryptor>(),
+      getIt<AccountController>(),
+    ),
+  );
+  getIt.registerSingleton(
+    GroupsLatestMessagesService(
+      getIt<EncryptionController>(),
+      getIt<AccountController>(),
+    ),
+  );
   getIt.registerSingleton(GroupsTableService(getIt<GroupEncryptor>()));
-  getIt.registerSingleton(GetConversationService(getIt<GroupEncryptor>(), getIt<AccountController>()));
-  getIt.registerSingleton(GroupNameService(getIt<AccountController>(), getIt<EncryptionController>(), getIt<GroupEncryptor>()));
-  getIt.registerSingleton(AccountsWithConversationsViewService(getIt<EncryptionController>(), getIt<AccountController>(), getIt<AccountEncryptor>()));
+  getIt.registerSingleton(
+    GetConversationService(getIt<GroupEncryptor>(), getIt<AccountController>()),
+  );
+  getIt.registerSingleton(
+    GroupNameService(
+      getIt<AccountController>(),
+      getIt<EncryptionController>(),
+      getIt<GroupEncryptor>(),
+    ),
+  );
+  getIt.registerSingleton(
+    AccountsWithConversationsViewService(
+      getIt<EncryptionController>(),
+      getIt<AccountController>(),
+      getIt<AccountEncryptor>(),
+    ),
+  );
   getIt.registerSingleton(AccountImageMetadataEncryptor(getIt<Encryptor>()));
-  getIt.registerSingleton(AccountImageMetadataService(getIt<AccountImageMetadataEncryptor>()));
-  getIt.registerSingleton(ImagesIOController(getIt<AccountController>(), getIt<EncryptionController>(), getIt<AccountImageMetadataService>()));
+  getIt.registerSingleton(
+    AccountImageMetadataService(getIt<AccountImageMetadataEncryptor>()),
+  );
+  getIt.registerSingleton(
+    ImagesIOController(
+      getIt<AccountController>(),
+      getIt<EncryptionController>(),
+      getIt<AccountImageMetadataService>(),
+    ),
+  );
   getIt.registerSingleton(ImagesController(getIt<ImagesIOController>()));
   getIt.registerSingleton(IsGroupActiveService(getIt<EncryptionController>()));
-  getIt.registerSingleton(SecondsSinceLastActivityService(getIt<AccountActivityEncryptor>()));
-  getIt.registerSingleton(SessionController(getIt<AccountEncryptor>(), getIt<AccountController>()));
-
+  getIt.registerSingleton(
+    SecondsSinceLastActivityService(getIt<AccountActivityEncryptor>()),
+  );
+  getIt.registerSingleton(
+    SessionController(getIt<AccountEncryptor>(), getIt<AccountController>()),
+  );
 }
 
 Future<void> initServices() async {

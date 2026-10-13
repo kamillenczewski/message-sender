@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_soloud/flutter_soloud.dart';
 import 'package:get_it/get_it.dart';
@@ -37,10 +36,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Messenger',
-      home: MyHomePage(),
-    );
+    return MaterialApp(title: 'Messenger', home: MyHomePage());
   }
 }
 
@@ -68,9 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
       onGenerateRoute: (routeSettings) {
         final page = _pages[routeSettings.name] ?? FirstPage();
 
-        return PageRouteBuilder(
-          pageBuilder: (_, _, _) => page,
-        );
+        return PageRouteBuilder(pageBuilder: (_, _, _) => page);
       },
     );
   }
